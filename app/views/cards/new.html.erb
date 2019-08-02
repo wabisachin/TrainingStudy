@@ -1,0 +1,13 @@
+<main>
+    <h2>新規カード作成</h2>
+    <%= form_for @card do |f| %>
+    <!--カードの内容登録-->
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.label :front_word, "カード表面" %>
+        <%= f.text_field :front_word %>
+        <%= f.label :front_word, "カード表面" %>
+        <%= f.text_field :back_word %>
+        <%= f.submit "登録", class:"btn btn-primary" %>
+        
+    <% end %>
+</main>
