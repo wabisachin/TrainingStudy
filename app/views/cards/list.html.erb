@@ -1,0 +1,19 @@
+<main>
+    <h2>単語帳一覧</h2>
+    <!--テーブルの記述-->
+<table class="table table-hover table-responsive">
+	<thead>
+		<tr>
+			<th>チェックリスト</th>
+			<th>id</th>
+			<th>カード表面</th>
+			<th>カード裏面</th>
+			<th>コメント</th>
+			<th>スター</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <%= render partial: "card", collection: @cards %>
+	</tbody>
+</table>
+</main>

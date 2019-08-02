@@ -1,4 +1,8 @@
 class CardsController < ApplicationController
+    def list
+        @cards = Card.all.order(created_at: "DESC")
+    end
+    
     def new
         @card = Card.new()
     end

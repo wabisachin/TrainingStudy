@@ -38,7 +38,7 @@
       			  <% if user_signed_in? %>
       			    <li><a href="#">マイページ</a></li>
         				<li><%= link_to "新規作成", new_card_path, class: "active" %></li>
-        				<li><%= link_to "単語帳一覧", root_path, class: "active" %></li>
+        				<li><%= link_to "単語帳一覧","/cards_list/ #{current_user.id}", class: "active" %></li>
         				<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         			<% else %>
         				<li><%= link_to "ログイン",user_session_path %></li>
