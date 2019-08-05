@@ -25,6 +25,17 @@ class CardsController < ApplicationController
     end
     
     def edit_multiple
+        # @cardsの中に選択されたレコードをリストとして格納
+        # @cards=[]
+        
+        # 選択されたリストのid
+        selected_ids= params[:selected_ids]
+        @cards_selected=Card.where(id:selected_ids)
+        # 繰り返し処理で一つずつ格納
+        # selected_ids.each do |id|
+        #     card=Card.find(id)
+        #     @cards.push(card)
+        # end
     end
     # プライペート関数
     private 

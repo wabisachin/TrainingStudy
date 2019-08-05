@@ -1,8 +1,11 @@
 <main>
     <h2>単語帳一覧</h2>
     <!--テーブルの記述-->
-    <%= form_tag 
-    <button class="btn btn-primary">選択リストの一括編集</button>
+    <%= form_tag('/edit_multiple',method: "post",id: "selected_cards") do %>
+    	<%=text_field_tag :logo %>
+	    <%= submit_tag '選択リストの一括編集', class: 'btn btn-success' %>
+    <% end %>
+    
     <button class="btn btn-danger">選択リストの一括削除</button>
     
     

@@ -1,11 +1,8 @@
 <!--テーブルコンテンツ-->
 <tr>
 	<td>
-		<!--fieldset内のvalueは一括更新、一括削除ボタンを押した時の送信フォームに送られる-->
-		<fieldset form="selected_ids">
-			<input type="checkbox" name="card_ids[]" value="<% card.id %>"></input>
-		</fieldset>
-		
+		<!--チェックがついたレコードのidをparams[:selected_ids]で取得できるように記述-->
+		<%= check_box_tag "selected_ids[]",card.id,checked= false,form:"selected_cards" %>
 	</td>
 	<!--indexメソッドを用いてidの順番を１から順に並べる-->
 	<td><%= @cards.index(card) +1 %></td>
