@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "top#index"
   get "cards_list/:user_id", to:"cards#list"
-  resources :cards, only: [:new, :create]
+  post "edit_multiple/", to:"cards#edit_muptiple"
+  resources :cards, only: [:new, :create,:edit,:destroy,:update]
   
 end

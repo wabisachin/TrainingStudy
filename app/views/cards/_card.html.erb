@@ -1,9 +1,83 @@
 <!--テーブルコンテンツ-->
 <tr>
-	<td><input type="checkbox"></input></td>
-	<td><%= card.id %></td>
+	<td>
+		<!--fieldset内のvalueは一括更新、一括削除ボタンを押した時の送信フォームに送られる-->
+		<fieldset form="selected_ids">
+			<input type="checkbox" name="card_ids[]" value="<% card.id %>"></input>
+		</fieldset>
+		
+	</td>
+	<!--indexメソッドを用いてidの順番を１から順に並べる-->
+	<td><%= @cards.index(card) +1 %></td>
 	<td><%= card.front_word %></td>
 	<td><%= card.back_word %></td>
-	<td>※コメント</td>
-	<td>※スター記号のリンク</td>
+	<td>※スター</td>
+	<!--ここから編集削除ボタンとモーダルのtd-->
+	<td>
+		<!--編集ボタンのmodal作成-->
+		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-<%= card.id %>">
+			編集
+		</button>
+		
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-<%= card.id %>">
+			削除
+		</button>
+		
+		<!-- 編集ボタンのモーダル・ダイアログ -->
+		<div class="modal fade" id="edit-<%= card.id %>" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+						<!--編集モーダルのタイトル-->
+						<h4 class="modal-title">カード内容の編集</h4>
+					</div>
+					<!--編集モーダルの内容-->
+					<%= form_for card do |f| %>
+						<div class="modal-body">
+							<%= f.hidden_field :user_id, value: current_user.id %>
+							<%= f.label :front_word, "カード表面" %>
+							<%= f.text_field :front_word, value:"#{card.front_word}",placeholder:"内容を入力してください" %><br>
+							<%= f.label :back_word, "カード裏面" %>
+							<%= f.text_field :back_word, value:"#{card.back_word}",placeholder:"内容を入力してください" %><br>
+							<%= f.label "お気に入り:" %>
+							<label><%= f.radio_button :favorite, "0" %>なし</label>
+							<label><%= f.radio_button :favorite, "1" %>あり</label>
+							
+							
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+							<%= f.submit "変更", class:"btn btn-primary" %>
+						</div>
+					<% end %>
+					
+				</div>
+			</div>
+		</div>
+		<!--ここまで個別編集のmodalの記述-->
+		
+		
+		<!-- 削除ボタンのモーダル・ダイアログ -->
+		<div class="modal fade" id="delete-<%= card.id %>" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+						<!--編集モーダルのタイトル-->
+						<h4 class="modal-title">カード内容の削除</h4>
+					</div>
+					<!--削除モーダルの内容-->
+					<div class="modal-body">
+						<p id="delete-description">以下のカードを本当に削除してよろしいですか？</p>
+						<p>カード表面: <%= card.front_word %></p>
+						<p>カード裏面: <%= card.back_word %></p>
+						<%= link_to "削除", "/cards/#{card.id}", method: :delete, class:"btn btn-danger" %>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<!--ここまで個別削除のmodalの記述-->
+	</td>
 </tr>
