@@ -1,0 +1,19 @@
+<!--各レコードのform送信内容の部分テンプレート-->
+<tr>
+    <td><%= @selected_cards.index(selected_card) +1 %></td>
+	<td>
+	    <%= text_field_tag "card_id_#{selected_card.id}[front_word]", selected_card.front_word, form:"selected_cards" %>
+	    <!--<%= selected_card.front_word %>-->
+	 </td>
+	<td>
+	    <%= text_field_tag "card_id_#{selected_card.id}[back_word]", selected_card.back_word, form:"selected_cards" %>
+	    <!--<%= selected_card.back_word %>-->
+	</td>
+	<td>スター</td>
+</tr>
+
+<!--selected_cardのidをフォームに送信-->
+<%= hidden_field_tag "card_id_#{selected_card.id}[id]", selected_card.id, form:"selected_cards" %>
+
+<!--選択されたカードのidsを抽出-->
+<%= hidden_field_tag "selected_ids[]", selected_card.id, form:"selected_cards" %>

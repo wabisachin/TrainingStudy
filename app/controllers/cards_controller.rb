@@ -30,16 +30,32 @@ class CardsController < ApplicationController
         
         # 選択されたリストのid
         selected_ids= params[:selected_ids]
-        @cards_selected=Card.where(id:selected_ids)
+        @selected_cards=Card.where(id: selected_ids)
         # 繰り返し処理で一つずつ格納
         # selected_ids.each do |id|
         #     card=Card.find(id)
         #     @cards.push(card)
         # end
     end
+    
+    def update_multiple
+        # binding.pry
+        ids = params[:selected_ids]
+        # 選択されたレコードの変更内容を順番に反映
+        ids.each do |id|
+            card = Card.find(id)
+            card.update(selected_card_params("card_id_#{id}"))
+        end
+        redirect_to "/cards_list/#{current_user.id}"
+    end
     # プライペート関数
     private 
     def card_params
-        params.require(:card).permit(:user_id,:front_word, :back_word,:favorite)
+        params.require(:card).permit(:user_id, :front_word, :back_word,:favorite)
     end
+    
+    def selected_card_params(card_id)
+        params.require(card_id).permit(:id,:front_word,:back_word,:favorite)
+    end
+    
 end

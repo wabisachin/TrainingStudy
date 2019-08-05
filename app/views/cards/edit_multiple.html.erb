@@ -1,6 +1,20 @@
-<p>odfsafa</p>
-<%= @cards_selected %>
-<% @cards_selected.each do |card| %>
-    <%= card %>
-<% end %>
-<%= @cards %>
+<h2>編集するカード一覧</h2>
+<!--編集カードのテーブル作成-->
+<table class="table table-hover">
+    <!--一括送信のformと送信ボタン-->
+    <%= form_tag('/update_multiple',method: "post",id: "selected_cards") do %>
+	    <%= submit_tag '一括編集', class: 'btn btn-success' %>
+    <% end %>
+    
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>カード表面</th>
+			<th>カード裏面</th>
+			<th>お気に入り</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <%= render partial: 'selected_card', collection: @selected_cards %>
+	</tbody>
+</table>

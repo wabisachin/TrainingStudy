@@ -2,7 +2,6 @@
     <h2>単語帳一覧</h2>
     <!--テーブルの記述-->
     <%= form_tag('/edit_multiple',method: "post",id: "selected_cards") do %>
-    	<%=text_field_tag :logo %>
 	    <%= submit_tag '選択リストの一括編集', class: 'btn btn-success' %>
     <% end %>
     

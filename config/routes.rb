@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "top#index"
   get "cards_list/:user_id", to:"cards#list"
   post "edit_multiple", to:"cards#edit_multiple"
+  post "update_multiple", to:"cards#update_multiple"
   resources :cards, only: [:new, :create,:edit,:destroy,:update]
   
 end

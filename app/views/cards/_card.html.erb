@@ -2,7 +2,7 @@
 <tr>
 	<td>
 		<!--チェックがついたレコードのidをparams[:selected_ids]で取得できるように記述-->
-		<%= check_box_tag "selected_ids[]",card.id,checked= false,form:"selected_cards" %>
+		<%= check_box_tag "selected_ids[]",card.id,checked= false, form:"selected_cards" %>
 	</td>
 	<!--indexメソッドを用いてidの順番を１から順に並べる-->
 	<td><%= @cards.index(card) +1 %></td>
