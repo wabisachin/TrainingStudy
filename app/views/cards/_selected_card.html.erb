@@ -14,6 +14,5 @@
 
 <!--selected_cardのidをフォームに送信-->
 <%= hidden_field_tag "card_id_#{selected_card.id}[id]", selected_card.id, form:"selected_cards" %>
-
 <!--選択されたカードのidsを抽出-->
 <%= hidden_field_tag "selected_ids[]", selected_card.id, form:"selected_cards" %>

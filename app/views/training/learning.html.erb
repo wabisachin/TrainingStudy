@@ -1,0 +1,42 @@
+<div class="header-training text-center">
+    <h2 class="heading">英単語を覚えよう</h2>
+</div>
+
+<div class="container">
+    <div class="training">
+        <main class="mainImage">
+            <!--単語カードの一覧を一覧取得、ただしcurrentクラス以外は非表示-->
+            <% @cards.each_with_index do |card,index| %>
+                <div class="content text-center">
+                    <h3 class="question"><%= card.front_word %></h3>
+                </div>
+                
+                <div class="content text-center">
+                    <h3 class="answer"><span><%= card.back_word %></span></h3>
+                </div>
+            <% end %>
+            
+        </main>
+        <nav class="itemNav">
+            <li id="play"><p>play</p></li>
+            <li id="stop"><p>stop</p></li>
+            <li id="prev"><p>&lt;</p></li>
+            <li id="next"><p>&gt;</p></li>
+            
+        </nav>
+        
+        <!--<ul class="thumbnails">-->
+        <!--    <% @cards.each_with_index do |card,index| %>-->
+        <!--        <% if index == 0 %>-->
+        <!--            <li class="current"><%= card.front_word %></li>-->
+        <!--        <% else %>-->
+        <!--            <li><%= card.front_word %></li>-->
+        <!--        <% end %>-->
+        <!--    <% end %>-->
+        <!--</ul>-->
+        
+    </div>  
+</div>
+
+<!--最後にassts/javascript内のlearning.jsファイルを読み込む-->
+<%= javascript_include_tag 'learning' %>

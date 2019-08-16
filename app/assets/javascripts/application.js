@@ -15,9 +15,18 @@
 //= require turbolinks
 //= require jquery3
 //= require bootstrap-sprockets
-//= require_tree .
+// = require_tree .
 
 
 $(function(){
+        
+    $('#btn1').click(function(){
+        $("#form_edit").attr('id','selected_cards');
+    });
+    
+    $('#btn2').click(function(){
+        $("#form_delete").attr('id','selected_cards');
+    });
+    
     
 })

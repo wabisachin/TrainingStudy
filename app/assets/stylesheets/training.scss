@@ -1,0 +1,80 @@
+// Place all the styles related to the training controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.header-training {
+  margin-bottom: 10px;
+}
+
+.heading {
+  display:inline;
+}
+
+.mainImage {
+  width: 400px;
+  height: 300px;
+  background-color: pink;
+  margin-bottom: 10px;
+}
+
+.training {
+  width:400px;
+  margin: 0 auto;
+}
+
+.itemNav {
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  margin-bottom: 10px;
+}
+
+.itemNav li {
+  width:100px;
+  border:1px solid #dedede;
+  border-radius:5px;
+  text-align:center;
+  user-select:none;
+  cursor:pointer;
+  
+  
+}
+
+#play,#stop {
+  width:150px;
+}
+
+.thumbnails {
+  display:grid;
+  grid-template-columns:repeat(5,76px);
+  grid-template-rows:repeat(5,76px);
+  gap:5px;
+  padding:0;
+  margin:0;
+}
+
+.thumbnails li {
+  // border:1px solid black;
+  background: #48D1CC;
+  list-style: none;
+  opacity: 0.7;
+}
+
+.thumbnails li:hover {
+  opacity:1;
+}
+
+
+.mainImage .content {
+  display:none;
+}
+
+.mainImage .current {
+  display:block;
+}
+
+.question , .answer{
+  line-height:300px;
+}
+
+

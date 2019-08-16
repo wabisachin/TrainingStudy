@@ -39,7 +39,6 @@ class CardsController < ApplicationController
     end
     
     def update_multiple
-        # binding.pry
         ids = params[:selected_ids]
         # 選択されたレコードの変更内容を順番に反映
         ids.each do |id|
@@ -47,6 +46,18 @@ class CardsController < ApplicationController
             card.update(selected_card_params("card_id_#{id}"))
         end
         redirect_to "/cards_list/#{current_user.id}"
+    end
+    
+    def destroy_multiple
+        # 選択されたレコードの繰り返し処理
+        # binding.pry
+        ids = params[:selected_ids]
+        ids.each do |id|
+            card=Card.find(id)
+            card.destroy
+        end
+        redirect_to "/cards_list/#{current_user.id}"
+        
     end
     # プライペート関数
     private 

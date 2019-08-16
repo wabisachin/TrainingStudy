@@ -1,0 +1,76 @@
+// jsが適用されているかのテストコード
+var head = document.querySelector('.heading')
+head.addEventListener('click',function(){
+    head.style.backgroundColor = "red";
+    console.log('oi')
+})
+
+// ここからjsの記述
+
+// currenNumの定義と初期値設定
+var currentNum = 0;
+// 単語カードの数をカウント
+var words = document.querySelectorAll('.mainImage .content')
+// 初期設定として最初の要素にcurrentクラスを付与
+words[currentNum].classList.add('current')
+
+function removeCurrentClass() {
+    words[currentNum]
+        .classList.remove('current')
+}
+
+function addCurrentClass() {
+    words[currentNum]
+        .classList.add('current')
+}
+
+
+// nextボタンのセレクタ取得
+var next = document.getElementById('next');
+
+// nextボタンを押したときの処理
+next.addEventListener('click',function() {
+    console.log('oi')
+    removeCurrentClass();
+    currentNum++;
+    // 単語カードの数を取得
+    if (currentNum === words.length) {
+        currentNum = 0;
+    }
+    addCurrentClass();
+    
+})
+
+// prevボタンのセレクタ取得
+var prev = document.getElementById('prev');
+// prevボタンを押したときの処理
+prev.addEventListener('click',function() {
+    removeCurrentClass();
+    currentNum--;
+    // 単語カードの数を取得
+    if (currentNum < 0) {
+        currentNum = words.length -1;
+    }
+    addCurrentClass();
+    
+})
+
+// playボタンのセレクタ取得
+var play = document.getElementById('play');
+// stopボタンのセレクタ取得
+var stop = document.getElementById('stop');
+
+function playSlideshow() {
+    let timerId = setTimeout(function(){
+        next.click();
+        playSlideshow();
+    },1000)
+        
+    stop.addEventListener('click',function() {
+        clearTimeout(timerId);
+    })
+}
+// playボタンを押したときの処理
+play.addEventListener('click',function() {
+   playSlideshow()
+})

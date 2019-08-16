@@ -7,7 +7,11 @@
     <%= csp_meta_tag %>
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--jqueryの読み込み-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <%= javascript_include_tag 'application' , 'data-turbolinks-track': 'reload'%>
+    
+    <!---->
     
   </head>
 
@@ -39,6 +43,7 @@
       			    <li><a href="#">マイページ</a></li>
         				<li><%= link_to "新規作成", new_card_path, class: "active" %></li>
         				<li><%= link_to "単語帳一覧","/cards_list/ #{current_user.id}", class: "active" %></li>
+        				<li><%= link_to "トレーニング", "/learning/#{current_user.id}" %></li>
         				<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         			<% else %>
         				<li><%= link_to "ログイン",user_session_path %></li>
