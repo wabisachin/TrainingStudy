@@ -9,6 +9,11 @@
     <section id="result">
         <p>Score 3/3</p>
         <a href="">Replay?</a>
+        <%= form_tag("/answers/#{current_user.id}", method: :post) do %>
+            <%= hidden_field_tag :answer_result %>
+            <%= text_field_tag :test %>
+            <%= submit_tag "データを送信" %>
+        <% end %>
     </section>
 </div>
 

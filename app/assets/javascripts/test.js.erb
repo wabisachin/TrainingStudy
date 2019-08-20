@@ -9,21 +9,24 @@
         
     const p = document.getElementById('question');
     const ans = document.querySelector('#answer > input');
-    const btn = document. getElementById('button');
+    const btn = document.getElementById('button');
     const result = document.getElementById('result');
     const scoreLabel = document.querySelector('#result > p')
+    // hidden_fieldタグを取得
+    const ans_result = document.getElementById('answer_result')
+    const test = document.getElementById('test')
     // 登録された単語を配列で取得
-    
-    
     console.log(cardSet);
-    console.log(cardSet_json[0][1])
+    console.log(cardSet[0]["front_word"])
     
     // 初期値の設定
     let currentNum = 0;
     let score = 0;
+    // 解答結果を保持するための変数
+    let ans_list =[]
     
     function setQuiz() {
-        p.textContent = cardSet[currentNum][0]
+        p.textContent = cardSet[currentNum]["front_word"]
         if(currentNum === cardSet.length - 1) {
              btn.textContent = "ShowScore";
         }
@@ -32,16 +35,26 @@
     setQuiz();
     // Nextボタンを押した時の処理
     btn.addEventListener('click',()=>{
-        if (cardSet[currentNum][1] === ans.value) { 
+        if (cardSet[currentNum]["back_word"] === ans.value) { 
             score++;
+            // 正解の場合、ans_listの要素にcard_idとresultをキーにしたハッシュを追加
+            ans_list.push({id: cardSet[currentNum]["id"], result:1});
+        } else {
+            // 不正解の場合はresultの値に０を代入
+            ans_list.push({id: cardSet[currentNum]["id"],result:0});
         }
-        ans.value = "";
-        console.log(score);
         
+        ans.value = "";
+        // console.log(score);
         // 最後の問題出題時は結果を表示
         if (currentNum === cardSet.length - 1) {
             scoreLabel.textContent = `Score: ${score}/${cardSet.length}`;
+            console.log(ans_list);
             result.classList.add('show');
+            // hidden_fieldの値にテスト問題の結果を追加.ただし、結果はjsの配列形式であるため、JSON形式に変換
+            ans_result.value = JSON.stringify(ans_list);
+            test.value = "ok";
+            return;
         }
         currentNum++;
         setQuiz();

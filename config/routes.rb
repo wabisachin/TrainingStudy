@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "test/:user_id", to:"training#test"
   post "edit_multiple", to:"cards#edit_multiple"
   post "update_multiple", to:"cards#update_multiple"
+  post "answers/:user_id",to: "answers#add_results"
   delete "destroy_multiple", to:"cards#destroy_multiple"
   resources :cards, only: [:new, :create,:edit,:destroy,:update]
   
