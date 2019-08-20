@@ -77,4 +77,94 @@
   line-height:300px;
 }
 
+// ここからtestのscss
+.test-container {
+  width:400px;
+  margin: 0 auto;
+  position:relative;
+}
 
+#question {
+  font-size:16px;
+  font-weight:bold;
+  padding:15px;
+}
+
+#answer > p {
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #7db4e6;/*左線*/
+}
+
+#answer > p > span {
+  background: red;
+  color:white;
+  padding:3px;
+  border-radius:3px;
+  
+}
+
+#answer > input{
+  width:400px;
+  padding:10px;
+  border-radius:5px;
+  margin-bottom: 10px;
+}
+
+#choices{
+  list-style:none;
+  padding:0px;
+  margin:0px;
+}
+
+#choices > li {
+  padding:10px;
+  border:1px solid #C0C0C0;
+  border-radius:5px;
+  cursor:pointer;
+  margin-bottom: 10px;
+}
+
+#button,#result > a {
+  border:1px solid royalblue;
+  border-radius:5px;
+  background-color:royalblue;
+  padding:10px;
+  // margin:10px;
+  cursor:pointer;
+  color:white;
+  text-align:center;
+  box-shadow:0 4px 0 mediumblue;
+}
+
+#result {
+  position:absolute;
+  padding:15px;
+  background:white;
+  width:300px;
+  height:200px;
+  top:-500px;
+  right:0px;
+  left:0px;
+  margin:0 auto;
+  border:2px solid #DDDDDD;
+}
+
+#result.show {
+  top:50px;
+}
+
+#result p {
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+}
+
+#result a {
+  display:block;
+  text-decoration:none;
+  text-align:center;
+  
+  
+}

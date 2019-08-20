@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "top#index"
   get "cards_list/:user_id", to:"cards#list"
   get "learning/:id", to:"training#learning"
+  get "test/:user_id", to:"training#test"
   post "edit_multiple", to:"cards#edit_multiple"
   post "update_multiple", to:"cards#update_multiple"
   delete "destroy_multiple", to:"cards#destroy_multiple"

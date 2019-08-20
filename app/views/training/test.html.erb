@@ -1,0 +1,19 @@
+<div class="test-container">
+    <p id="question"></p>
+    <div id="answer">
+        <p>解答<span>必須</span></p>
+        <input name="answer" placeholder="入力してください">
+    </div>
+    <div id="button" class="">Next</div>
+    <!--結果画面-->
+    <section id="result">
+        <p>Score 3/3</p>
+        <a href="">Replay?</a>
+    </section>
+</div>
+
+<!--jsファイルにカードのインスタンスデータの受け渡しの為のdivを記述-->
+<div id="item_cards" data-words='<%= @cards.to_json %>'></div>
+
+<!--最後にjsタグを読み込む-->
+<%= javascript_include_tag "test" %>

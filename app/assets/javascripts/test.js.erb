@@ -1,0 +1,53 @@
+'use strict'
+
+{
+    
+    // viewファイルからCardモデルのインスタンスを取得
+    const cardSet_json = document.getElementById('item_cards').dataset.words
+    // cardSet_jsonはjson表記だが、このままではあくまで文字列なのでjson形式として解析してObject型としてcardSetに代入
+    const cardSet = JSON.parse(cardSet_json);
+        
+    const p = document.getElementById('question');
+    const ans = document.querySelector('#answer > input');
+    const btn = document. getElementById('button');
+    const result = document.getElementById('result');
+    const scoreLabel = document.querySelector('#result > p')
+    // 登録された単語を配列で取得
+    
+    
+    console.log(cardSet);
+    console.log(cardSet_json[0][1])
+    
+    // 初期値の設定
+    let currentNum = 0;
+    let score = 0;
+    
+    function setQuiz() {
+        p.textContent = cardSet[currentNum][0]
+        if(currentNum === cardSet.length - 1) {
+             btn.textContent = "ShowScore";
+        }
+    }
+    
+    setQuiz();
+    // Nextボタンを押した時の処理
+    btn.addEventListener('click',()=>{
+        if (cardSet[currentNum][1] === ans.value) { 
+            score++;
+        }
+        ans.value = "";
+        console.log(score);
+        
+        // 最後の問題出題時は結果を表示
+        if (currentNum === cardSet.length - 1) {
+            scoreLabel.textContent = `Score: ${score}/${cardSet.length}`;
+            result.classList.add('show');
+        }
+        currentNum++;
+        setQuiz();
+    })
+    
+    
+    
+    // jsコード終わり
+}
