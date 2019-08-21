@@ -8,7 +8,17 @@
 	<td><%= @cards.index(card) +1 %></td>
 	<td><%= card.front_word %></td>
 	<td><%= card.back_word %></td>
-	<td>※スター</td>
+	<td><%= icon("fas", "fist-raised") %></td>
+	<!--正答率のデータを表示-->
+	<td>
+		<% total_times = card.answers.length %>
+		<% collect_times = card.answers.where(result: 1).length %>
+		<% collect_rate = collect_times/total_times.to_f %>
+		<!--率計算で分母が0の場合の処理,nanでないときは処理をしないので:以降は空白-->
+		<% collect_rate.nan? ? collect_rate = 0 : %>
+		<%= "#{sprintf("%.1f",collect_rate*100)} % ( #{collect_times}回 / #{total_times}回 ) " %>
+		
+	</td>
 	<!--ここから編集削除ボタンとモーダルのtd-->
 	<td>
 		<!--編集ボタンのmodal作成-->

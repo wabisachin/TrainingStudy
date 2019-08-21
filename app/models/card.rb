@@ -4,6 +4,6 @@ class Card < ApplicationRecord
     validates :back_word, presence: true 
     # アソシエーションの記述
     belongs_to :user
-    has_many :answer
+    has_many :answers, dependent: :destroy
     
 end
