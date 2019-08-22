@@ -2,10 +2,10 @@
 
 <% if card.weakness == 0 %>
 	<%=link_to "/weakpoint/#{card.id}" do %>
-		<%= icon("far", "star",style: "color:orange;") %>
+		<%= icon("far", "meh fa-lg",style: "color:rightblue;") %>
 	<% end %>
 <% else %>
 	<%=link_to "/weakpoint/#{card.id}" do %>
-		<%= icon("fas", "star", style: "color:orange;") %>
+		<%= icon("fas", "smile fa-lg", style: "color:orange;") %>
 	<% end %>
 <% end %>

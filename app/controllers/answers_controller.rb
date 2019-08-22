@@ -15,6 +15,8 @@ class AnswersController < ApplicationController
             end
             
             Answer.create(card_id: answer["id"], result: answer["result"])
+            # ここから苦手判定を行う処理
+            
             # binding.pry
         end
     
@@ -26,4 +28,5 @@ class AnswersController < ApplicationController
     def params_result
         params.permit(:answer_result)
     end
+    
 end
