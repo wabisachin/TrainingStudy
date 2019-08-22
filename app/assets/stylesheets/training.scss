@@ -126,7 +126,7 @@
   margin-bottom: 10px;
 }
 
-#button,#result > a {
+#button, #result > a, #submit {
   border:1px solid royalblue;
   border-radius:5px;
   background-color:royalblue;
@@ -161,10 +161,9 @@
   font-weight:bold;
 }
 
-#result a {
+#submit {
   display:block;
-  text-decoration:none;
-  text-align:center;
+  margin:0 auto;
   
   
 }

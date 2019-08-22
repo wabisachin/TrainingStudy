@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_031109) do
+ActiveRecord::Schema.define(version: 2019_08_21_080211) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "card_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_031109) do
     t.string "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "favorite", default: 0, null: false
+    t.integer "weakness", default: 0
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "edit_multiple", to:"cards#edit_multiple"
   post "update_multiple", to:"cards#update_multiple"
   post "answers/:user_id",to: "answers#add_results"
+  get "weakpoint/:card_id", to:"weakpoint#change"
   delete "destroy_multiple", to:"cards#destroy_multiple"
   resources :cards, only: [:new, :create,:edit,:destroy,:update]
   

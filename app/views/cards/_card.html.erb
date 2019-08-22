@@ -8,7 +8,11 @@
 	<td><%= @cards.index(card) +1 %></td>
 	<td><%= card.front_word %></td>
 	<td><%= card.back_word %></td>
-	<td><%= icon("fas", "star", style: "color:orange;") %></td>
+	<td>
+		<div id="weakpoint">
+			<%= render partial: "weakpoint", locals: {card: card} %>
+		</div>
+	</td>
 	<!--正答率のデータを表示-->
 	<td>
 		<% total_times = card.answers.length %>
@@ -47,11 +51,6 @@
 							<%= f.text_field :front_word, value:"#{card.front_word}",placeholder:"内容を入力してください" %><br>
 							<%= f.label :back_word, "カード裏面" %>
 							<%= f.text_field :back_word, value:"#{card.back_word}",placeholder:"内容を入力してください" %><br>
-							<%= f.label "お気に入り:" %>
-							<label><%= f.radio_button :favorite, "0" %>なし</label>
-							<label><%= f.radio_button :favorite, "1" %>あり</label>
-							
-							
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>

@@ -8,11 +8,10 @@
     <!--結果画面-->
     <section id="result">
         <p>Score 3/3</p>
-        <a href="">Replay?</a>
+        <!--<a href="">Replay?</a>-->
         <%= form_tag("/answers/#{current_user.id}", method: :post) do %>
             <%= hidden_field_tag :answer_result %>
-            <%= text_field_tag :test %>
-            <%= submit_tag "データを送信" %>
+            <%= submit_tag "データを送信",id: "submit"%>
         <% end %>
     </section>
 </div>

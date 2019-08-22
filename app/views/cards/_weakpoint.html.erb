@@ -1,0 +1,11 @@
+<!--苦手チェックのアイコン表示部分のテンプレート-->
+
+<% if card.weakness == 0 %>
+	<%=link_to "/weakpoint/#{card.id}" do %>
+		<%= icon("far", "star",style: "color:orange;") %>
+	<% end %>
+<% else %>
+	<%=link_to "/weakpoint/#{card.id}" do %>
+		<%= icon("fas", "star", style: "color:orange;") %>
+	<% end %>
+<% end %>
