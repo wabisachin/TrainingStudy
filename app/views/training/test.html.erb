@@ -1,10 +1,26 @@
 <div class="test-container">
-    <p id="question"></p>
-    <div id="answer">
-        <p>解答<span>必須</span></p>
-        <input name="answer" placeholder="入力してください">
-    </div>
-    <div id="button" class="">Next</div>
+    
+    <section id="introduction" >
+        <p class="title">テストを始める</p>
+        <p>＜テストモードを選択＞</p>
+        <div class="mode">
+            <input type="radio" name="quizset" checked value = "all"> 全ての問題から出題
+        </div>
+        <div class="mode">
+            <input type="radio" name="quizset" value = "weak"> 苦手問題のみ出題
+        </div>
+        <a id="start">START</a>
+    </section>
+    <!--テスト問題のcontent-->
+    <section id="test" class="hide">
+        <p id="question"></p>
+        <div id="answer">
+            <p>解答<span>必須</span></p>
+            <input name="answer" placeholder="入力してください">
+        </div>
+        <div id="button" class="">Next</div>
+    </section>
+    
     <!--結果画面-->
     <section id="result">
         <p>Score 3/3</p>
@@ -17,7 +33,7 @@
 </div>
 
 <!--jsファイルにカードのインスタンスデータの受け渡しの為のdivを記述-->
-<div id="item_cards" data-words='<%= @cards.to_json %>'></div>
+<div id="item_cards" data-words_all='<%= @cards.to_json %>' data-words_weak="<%= @cards_weakness.to_json %>"></div>
 
 <!--最後にjsタグを読み込む-->
 <%= javascript_include_tag "test" %>

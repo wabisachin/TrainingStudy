@@ -106,7 +106,7 @@
 }
 
 #answer > input{
-  width:400px;
+  width:100%;
   padding:10px;
   border-radius:5px;
   margin-bottom: 10px;
@@ -126,7 +126,7 @@
   margin-bottom: 10px;
 }
 
-#button, #result > a, #submit {
+#button, #submit, #introduction > a{
   border:1px solid royalblue;
   border-radius:5px;
   background-color:royalblue;
@@ -136,6 +136,13 @@
   color:white;
   text-align:center;
   box-shadow:0 4px 0 mediumblue;
+}
+
+#button.disabled {
+  color:black;
+  background:#C0C0C0;
+  box-shadow:0 4px 0 #808080;
+  opacity: 0.5;
 }
 
 #result {
@@ -152,7 +159,7 @@
 }
 
 #result.show {
-  top:50px;
+  top:30px;
 }
 
 #result p {
@@ -167,3 +174,38 @@
   
   
 }
+
+.test-container {
+  // width:400px;
+  border:2px solid #6495ED;
+  padding:30px;
+  border-radius:5px;
+}
+
+#introduction > a {
+  display:block;
+  text-decoration:none;
+}
+
+#introduction > .title {
+  font-size:24px;
+  font-weight:bold;
+}
+#introduction > p {
+  margin-bottom:10px;
+  text-align:center;
+}
+
+#introduction > .mode {
+  margin-bottom:10px;
+  text-align:center;
+}
+
+// 表示非表示を切り替えるためのclass
+.show {
+  display:visibility;
+}
+.hide {
+  display:none;
+}
+

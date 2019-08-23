@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   # アソシエーションの記述
-  has_many :cards
+  has_many :cards, dependent: :destroy
 end

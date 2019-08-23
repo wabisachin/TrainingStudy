@@ -1,48 +1,62 @@
 'use strict'
 
 {
+    // #introductionのセレクタ定義
+    const start = document.getElementById('start');
+    const introduction = document.getElementById('introduction');
+    const test = document.getElementById('test');
     
-    // viewファイルからCardモデルのインスタンスを取得
-    const cardSet_json = document.getElementById('item_cards').dataset.words
-    // cardSet_jsonはjson表記だが、このままではあくまで文字列なのでjson形式として解析してObject型としてcardSetに代入
-    let cardSet = JSON.parse(cardSet_json);
-    // 登録された単語を配列で取得
-    console.log(cardSet);
-    console.log(cardSet[0]["front_word"])
-    
-    // 問題の並び替え
-    for(let i = cardSet.length-1; i>=1; i--) {
-        const randam_num = Math.floor(Math.random()*i);
-        [cardSet[randam_num],cardSet[i]] = [cardSet[i],cardSet[randam_num]];
-        console.log(randam_num);
-        console.log(cardSet);
-    }
-    
-        
+    // #test周りのセレクタ定義
     const p = document.getElementById('question');
     const ans = document.querySelector('#answer > input');
     const btn = document.getElementById('button');
     const result = document.getElementById('result');
-    const scoreLabel = document.querySelector('#result > p')
-    // hidden_fieldタグを取得
-    const ans_result = document.getElementById('answer_result')
+    const scoreLabel = document.querySelector('#result > p');
     
+    // html内にdata属性として埋め込まれた問題セットを取得して変数に代入
+    let cardSet_json = document.getElementById('item_cards').dataset.words_all;
+    // cardSet_jsonはjson表記だが、このままではあくまで文字列なのでjson形式として解析してObject型としてcardSetに代入
+    let cardSet = JSON.parse(cardSet_json);
+    // 解答結果データ送信用として用意されたhidden_fieldタグのセレクタ取得
+    const ans_result = document.getElementById('answer_result');
     
-    
-    // 初期値の設定
+    // ここから初期値の設定
     let currentNum = 0;
     let score = 0;
-    // 解答結果を保持するための変数
-    let ans_list =[]
+    let ans_list =[];　// 解答結果を保持するための変数
     
     function setQuiz() {
-        p.textContent = cardSet[currentNum]["front_word"]
+        p.textContent = cardSet[currentNum]["front_word"];
         if(currentNum === cardSet.length - 1) {
              btn.textContent = "ShowScore";
         }
     }
     
-    setQuiz();
+    
+    // 最初のスタートボタン押したときの処理
+    start.addEventListener('click',() => {
+        introduction.classList.add('hide');
+        test.classList.remove('hide');
+        // const radio = document.querySelecter('input[name="quizset"]:checked');
+        const radio = document.querySelector('input[name="quizset"]:checked');
+        // もし苦手問題のみが選択された場合はcardSetの内容を書き換える
+        if (radio.value === "weak" ) {
+            cardSet_json = document.getElementById('item_cards').dataset.words_weak;
+            cardSet = JSON.parse(cardSet_json);
+        }
+        
+        // 問題の並び替え
+        for(let i = cardSet.length-1; i>=1; i--) {
+            const randam_num = Math.floor(Math.random()*i);
+            [cardSet[randam_num],cardSet[i]] = [cardSet[i],cardSet[randam_num]];
+            console.log(randam_num);
+            console.log(cardSet);
+        }
+        // 第一問目をセット
+        setQuiz();
+    
+        
+    })
     // Nextボタンを押した時の処理
     btn.addEventListener('click',()=>{
         // 問題が解き終わったらボタン押しても反応しないようにする処理
@@ -63,6 +77,7 @@
         
         // 最後の問題出題時は結果を表示
         if (currentNum === cardSet.length - 1) {
+            btn.classList.add('disabled');
             scoreLabel.textContent = `Score: ${score}/${cardSet.length}`;
             console.log(ans_list);
             result.classList.add('show');
@@ -71,7 +86,7 @@
         }
         currentNum++;
         setQuiz();
-    })
+    });
     
     
     

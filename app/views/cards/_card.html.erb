@@ -10,7 +10,11 @@
 	<td><%= card.back_word %></td>
 	<td>
 		<div id="weakpoint">
-			<%= render partial: "weakpoint", locals: {card: card} %>
+			<% if card.weakness == 0 %>
+				<%= icon("far", "meh fa-lg",style: "color:steelblue;") %>
+			<% else %>
+				<%= icon("fas", "smile fa-lg", style: "color:orange;") %>
+			<% end %>
 		</div>
 	</td>
 	<!--正答率のデータを表示-->
