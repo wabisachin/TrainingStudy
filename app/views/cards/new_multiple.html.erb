@@ -1,0 +1,18 @@
+<div class="new-muptiple container">
+    <h2>新規カード登録</h2>
+    <%= form_tag "/create_multiple/#{current_user.id}", method: :post do %>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>カード表面</th>
+                    <th>カード裏面</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= render partial: "add_card_list" %>
+            </tbody>
+        </table>
+        <%= submit_tag "送信" %>
+    <% end %>
+</div>

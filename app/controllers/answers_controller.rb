@@ -23,11 +23,15 @@ class AnswersController < ApplicationController
             correct_rate = card.correct_rate
             # 同じくcardモデルが持つcorrect_times_counterメソッドから直近の正解数を取得
             collect_times = card.correct_times_counter(countNum)
-            # ここから条件分岐。合計正答率80%以上または直近連続正解５回で苦手チェックを外す。下回れば苦手チェック
-            if correct_rate >= 0.8 or collect_times == countNum
+            total_times = card.answers.length
+            # ここから条件分岐。解答回数10回かつ合計正答率80%以上、または直近連続正解５回で苦手チェックを外す。下回れば苦手チェック
+            if total_times == 10 && correct_rate >= 0.8
                 card.weakness = 1
                 card.save
                 # binding.pry
+            elsif collect_times == countNum
+                card.weakness = 1
+                card.save
             else
                 card.weakness = 0
                 card.save

@@ -1,10 +1,23 @@
 class CardsController < ApplicationController
     def list
-        @cards = Card.all.order(created_at: "DESC")
+        @cards = Card.where(user_id: current_user.id).order(created_at: "DESC")
     end
     
     def new
         @card = Card.new()
+    end
+    
+    def new_multiple
+    end
+    
+    def create_multiple
+        # formから受け取った複数登録のデータをcards_columnに代入
+        cards_column = params[:cards]
+        cards_column.each do |card| 
+            Card.create(user_id: current_user.id, front_word: card[:front_word], back_word: card[:back_word])
+        end
+        # binding.pry
+        redirect_to root_path
     end
     
     def update
@@ -68,5 +81,6 @@ class CardsController < ApplicationController
     def selected_card_params(card_id)
         params.require(card_id).permit(:id,:front_word,:back_word,:favorite)
     end
+    
     
 end

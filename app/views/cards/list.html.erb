@@ -1,8 +1,5 @@
 <main>
-	<p id="check">push me!</p>
     <h2>単語帳一覧</h2>
-    <!--テーブルの記述-->
-    <!--id: "selected_cards"-->
     <div class="d-inline-flex">
     	
     	<%= form_tag('/edit_multiple',method: "post", id:"form_edit",style:"margin-right:5px;") do %>
@@ -12,10 +9,6 @@
 		    <%= submit_tag 'チェックリストの一括削除', class: 'btn btn-danger', id:"btn2" %>
 	    <% end %>
     </div>
-    
-    
-    <!--<button class="btn btn-danger">選択リストの一括削除</button>-->
-    
     
 <table class="table table-hover table-responsive mt-10px">
 	<thead>

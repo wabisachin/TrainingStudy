@@ -1,0 +1,7 @@
+<% for i in 0..9 do %>
+        <tr>
+            <td><%= i %></td>
+            <td><%= text_field_tag "cards[][front_word]" %></td>
+            <td><%= text_field_tag "cards[][back_word]" %></td>
+        </tr>
+<% end %>
