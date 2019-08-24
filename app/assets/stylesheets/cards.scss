@@ -8,6 +8,21 @@
   border-left: solid 5px #7db4e6;/*左線*/
 }
 
-tr> th,td{
-  text-align:center;
+// ここからnew_muptipleのcss
+.new-multiple {
+  width:600px;
+  margin:0 auto;
+  
+  h2, .btn, tr > th, tr > td{
+    text-align:center;
+  }
+  
+  .btn {
+    display:block;
+    width:200px;
+    margin:0 auto;
+  }
 }
+
+
+

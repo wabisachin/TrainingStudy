@@ -1,7 +1,7 @@
-<div class="new-muptiple container">
+<div class="new-multiple">
     <h2>新規カード登録</h2>
     <%= form_tag "/create_multiple/#{current_user.id}", method: :post do %>
-        <table>
+        <table class="table table-responsive mt-10px">
             <thead>
                 <tr>
                     <th>id</th>
@@ -13,6 +13,6 @@
                 <%= render partial: "add_card_list" %>
             </tbody>
         </table>
-        <%= submit_tag "送信" %>
+        <%= submit_tag "送信", class:"btn btn-primary" %>
     <% end %>
 </div>
