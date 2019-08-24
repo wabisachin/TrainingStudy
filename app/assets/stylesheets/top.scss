@@ -6,9 +6,52 @@
         background: cover;
         height:400px;
         width:1000px;
+        margin-bottom:30px;
+        
     }
 }
 
-.header_logo {
-    height:100px;
+.introduction, .description,.contact-form{
+    text-align:center;
+    
+    h1 {
+        margin:30px;
+    }
+    
+    p {
+        font-size:18px;
+        margin-bottom:20px;
+    }
+    
+    ul {
+        width:500px;
+        list-style:none;
+        // display:block;
+        // padding:0px;
+        margin:30px auto;
+    }
+    
+    ul > li {
+        text-align:left;
+        margin-bottom:10px;
+        
+    }
 }
+
+.introduction {
+    
+}
+
+.description {
+    background-color: #FFCC66;
+}
+
+.contact-form {
+    .name-form,.comment-form,.submit-form{
+        display:block;
+        margin:10px auto;
+        width:80%;
+        border-radius:3px;
+    }
+}
+

@@ -10,20 +10,20 @@
 	    <% end %>
     </div>
     
-<table class="table table-hover table-responsive mt-10px">
-	<thead>
-		<tr>
-			<th>選択</th>
-			<th>id</th>
-			<th>カード表面</th>
-			<th>カード裏面</th>
-			<th>合格判定</th>
-			<th>直近正答率 (正答回数/出題回数)※最大10回</th>
-			<th>編集/削除</th>
-		</tr>
-	</thead>
-	<tbody>
-	    <%= render partial: "card", collection: @cards %>
-	</tbody>
-</table>
+	<table class="table table-hover table-responsive mt-10px" id="words-table">
+		<thead>
+			<tr>
+				<th>選択</th>
+				<th>id</th>
+				<th>カード表面</th>
+				<th>カード裏面</th>
+				<th>合格判定</th>
+				<th>直近正答率 (正答回数/出題回数)※最大10回</th>
+				<th>編集/削除</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <%= render partial: "card", collection: @cards %>
+		</tbody>
+	</table>
 </main>

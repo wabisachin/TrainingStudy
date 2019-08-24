@@ -8,6 +8,11 @@
   border-left: solid 5px #7db4e6;/*左線*/
 }
 
+// ここから単語管理ページのcss
+tr > th,tr > td {
+  text-align:center;
+}
+
 // ここからnew_muptipleのcss
 .new-multiple {
   width:600px;
