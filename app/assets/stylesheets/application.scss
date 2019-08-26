@@ -19,6 +19,10 @@
  
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+// ここから全体のレイアウト
+ body {
+  background-color: #F4FAFA;
+}
  
  
  .navbar-brand {
@@ -45,10 +49,9 @@
 }
 
 // ここから新規会員登録ページ
-body {
-  background-color: #F4FAFA;
-}
-.sign-up {
+
+
+.sign-up, .login {
   .container {
     width:512px;
     background-color:white;
@@ -64,14 +67,14 @@ body {
     margin-bottom:30px;
   }
   
-  .form-signup {
+  .form-signup, .form-login {
     width:300px;
     margin:10px auto;
   }
 }
 
 
-.form-signup {
+.form-signup, .form-login {
   margin-top:30px;
   
   .field > input {
