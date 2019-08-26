@@ -29,9 +29,13 @@
       				<span class="icon-bar"></span>
       			</button>
       			<% if current_user %>
-      			  <%= link_to "ようこそ, #{current_user.name}さん", root_path, class:"navbar-brand" %>
+      			  <%= link_to "/cards_list/ #{current_user.id}", class:"navbar-brand" do %>
+      			    <img src="/assets/logo2.png">
+      			  <% end %>
       			<% else %>
-      			  <%= link_to "ようこそ,ゲストさん", root_path, class:"navbar-brand" %>
+      			  <%= link_to root_path, class:"navbar-brand" do %>
+      			    <img src="/assets/logo2.png">
+      			  <% end %>
       			 <% end %>
       			
       		</div>
@@ -40,9 +44,9 @@
       			<ul class="nav navbar-nav">
       			  <!--ユーザーがログインしているかどうかで条件分岐-->
       			  <% if user_signed_in? %>
-      			    <li><a href="#">マイページ</a></li>
-        				<li><%= link_to "新規作成", new_card_path, class: "active" %></li>
-        				<li><%= link_to "複数単語登録", "/new_multiple/#{current_user.id}", class: "active" %></li>
+      			    <li><%= link_to "マイページ", user_path(current_user), class: "active" %></li>
+        				<!--<li><%= link_to "新規作成", new_card_path, class: "active" %></li>-->
+        				<li><%= link_to "カード登録", "/new_multiple/#{current_user.id}", class: "active" %></li>
         				<li><%= link_to "単語帳一覧","/cards_list/ #{current_user.id}", class: "active" %></li>
         				<!--<li><%= link_to "トレーニング", "/learning/#{current_user.id}" %></li>-->
         				<li class="dropdown">

@@ -1,0 +1,53 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.profile {
+    background-color:#F9FBFE;
+}
+.profile-user {
+    width:400px;
+    margin: 0 auto;
+}
+.user-image img {
+    display:block;
+    // text-align:center;
+    margin:10px auto;
+    width: 140px;
+    height: 140px;
+}
+.user-image input {
+    margin:0 auto;
+}
+
+.user-form {
+    width:300px;
+    margin:0 auto;
+}
+
+.user-form label {
+    display:block;
+    color:#C8D3E2;
+    // text-align:center;
+}
+
+.user-form input {
+    display:block;
+    border-right:none;
+    border-left:none;
+    border-top:none;
+    width:300px;
+    margin-bottom:10px;
+    background-color:#F9FBFE;
+    // text-align:center;
+    
+}
+
+.submit input {
+    display:block;
+    background-color:#30C8D5;
+    color:white;
+    width:200px;
+    margin:10px auto;
+    border-color:#30C8D5;
+    border-radius:4px;
+}

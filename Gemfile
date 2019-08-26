@@ -70,3 +70,5 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.4.1'
+# Use ActiveStorage variant
+gem 'mini_magick'

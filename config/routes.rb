@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get "weakpoint/:card_id", to:"weakpoint#change"
   delete "destroy_multiple", to:"cards#destroy_multiple"
   resources :cards, only: [:new, :create,:edit,:destroy,:update]
+  resources :users, only: [:show,:update]
   
 end

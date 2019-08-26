@@ -6,25 +6,30 @@
     <section class="introduction">
         <div class="container">
             <h1>TrainingStudyとは?</h1>
-            <p>トレーニングスタディは中高生の学習効率を最大限に高めることを目指した総合サイトです</p>
+            <p>トレーニングスタディは中高生の学習効率を最大限に高めることを目的とした総合サイトです</p>
             
             <ul>
-                <li><%= icon("far","thumbs-up fa-lg",style:"color:#33CC99;") %>トレスタを使えば学校で習った英単語をより効率的に覚えられます</li>
-                <li><%= icon("far","thumbs-up fa-lg",style:"color:#33CC99;") %>計算トレーニングによって頭の回転を鍛えられます。</li>
-                <li><%= icon("far","thumbs-up fa-lg",style:"color:#33CC99;") %>楽しいゲームを通して思考力を向上させることができます</li>
+                <li><%= icon("far","thumbs-up fa-lg") %>トレスタを使えば学校で習った英単語をより効率的に覚えられます</li>
+                <li><%= icon("far","thumbs-up fa-lg") %>計算トレーニングによって頭の回転を鍛えられます。</li>
+                <li><%= icon("far","thumbs-up fa-lg") %>楽しいゲームを通して思考力を向上させることができます</li>
             </ul>
+            
+            <div class="sign-up">
+                <%= link_to "新規会員登録", new_user_registration_path, class:"button" %>
+                <!--<div class="button">新規会員登録</div>-->
+            </div>
         </div>
     </section>
     
     <section class="description">
         <div class="container">
-            <h1>トレスタが目指していること</h1>
+            <h1><%= icon("fas","highlighter") %>トレスタが目指していること</h1>
             <p>トレーニングスタディでは中高生が楽しく学習できることを追求しています。</p>
             <p>学生のみんながより楽しく、そしてより効率的に学べるような機能を盛り込みました。</p>
             <ul>
-                <li><%= icon("fas","check-square fa-lg", style:"color:#33CC99") %>  英単語テストでは解答結果を保存し、苦手な単語が優先的に出題されるようになっているので最短効率で単語を覚えられます</li>
-                <li><%= icon("fas","check-square fa-lg", style:"color:#33CC99") %>  計算テストではユーザーのテスト結果を毎回保存し、成長グラフを作れます。日々の成長を実感しながら学習に取り組むことができるでしょう(※未実装)</li>
-                <li><%= icon("fas","check-square fa-lg", style:"color:#33CC99") %>  学習進捗をみんなで共有したり、他の人が作った単語帳で遊べます(※未実装)</li>
+                <li><%= icon("fas","check-square fa-lg") %>  英単語テストでは解答結果を保存し、苦手な単語が優先的に出題されるようになっているので最短効率で単語を覚えられます</li>
+                <li><%= icon("fas","check-square fa-lg") %>  計算テストではユーザーのテスト結果を毎回保存し、成長グラフを作れます。日々の成長を実感しながら学習に取り組むことができるでしょう(※未実装)</li>
+                <li><%= icon("fas","check-square fa-lg") %>  学習進捗をみんなで共有したり、他の人が作った単語帳で遊べます(※未実装)</li>
             </ul>
             <p></p>
             <p>※今はまだ英単語機能の実装だけですが、ユーザーがより楽しく学べるように自分が作った単語帳を他の人とシェアしたり、学習進捗をみんなに公表できる機能を実装しようと考えています!</p>
@@ -40,15 +45,10 @@
         <div class="container">
             <h1><%= icon("fas","file-signature") %>お問い合わせ</h1>
             <%= form_tag "" ,method: :post,id:"contact" do %>
-                <!--<%= label_tag "名前" %>-->
                 <%= text_field_tag :name,"", placeholder:"名前",class:"name-form" %>
                 <br>
-                <!--<%= label_tag "お問い合わせの種類" %>-->
-                <!--<%= radio_button_tag :contact_type,""%>改善点のアドバイス-->
-                <!--<%= radio_button_tag :contact_type,"ご意見ご要望" %>ご意見ご要望-->
-                <!--<%= radio_button_tag :contact_type,"" %>その他-->
+                <%= text_field_tag :subject,"", placeholder:"件名",class:"subject-form" %>
                 <br>
-                <!--<%= label_tag "名前" %>-->
                 <%= text_area_tag :comment,"", class:"comment-form", placeholder:"質問やコメントはこちら" %>
                 <br>
                 <%= submit_tag "送信", class:"submit-form" %>
@@ -59,4 +59,5 @@
     
     <section class="comment">
     </section>
+    
 </main>

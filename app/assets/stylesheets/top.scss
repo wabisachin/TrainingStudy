@@ -39,7 +39,18 @@
 }
 
 .introduction {
-    
+    .sign-up {
+        margin-bottom:30px;
+    }
+    .sign-up > .button {
+        margin:30px auto;
+        color:white;
+        background-color:rgb(51, 213, 127);
+        font-size:24px;
+        border-radius:5px;
+        width: 200px;
+        padding:10px;
+    }
 }
 
 .description {
@@ -47,11 +58,28 @@
 }
 
 .contact-form {
-    .name-form,.comment-form,.submit-form{
+    // background-image: url("contact3.jpg");
+    background-size:cover;
+    // background-color: #faa;
+    background-color: #FFCC66;
+    .name-form,.comment-form,.subject-form,.submit-form{
+        border:1px solid white;
         display:block;
         margin:10px auto;
         width:80%;
-        border-radius:3px;
+        border-radius:5px;
+        font-size:20px;
+        height:40px;
+    }
+    
+    .comment-form {
+        height:100px;
+    }
+    
+    .submit-form {
+        background-color: #DA6B64;
+        border:1px solid #DA6B64;
+        border-radius:10px;
     }
 }
 

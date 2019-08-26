@@ -17,15 +17,20 @@ tr > th,tr > td {
 .new-multiple {
   width:600px;
   margin:0 auto;
+  background-color:rgb(232, 242, 247);
   
   h2, .btn, tr > th, tr > td{
     text-align:center;
   }
   
+  h2{
+    padding:20px;
+  }
+  
   .btn {
     display:block;
     width:200px;
-    margin:0 auto;
+    margin:10px auto;
   }
 }
 

@@ -17,7 +17,7 @@ class CardsController < ApplicationController
             Card.create(user_id: current_user.id, front_word: card[:front_word], back_word: card[:back_word])
         end
         # binding.pry
-        redirect_to root_path
+        redirect_to "/cards_list/#{current_user.id}"
     end
     
     def update
