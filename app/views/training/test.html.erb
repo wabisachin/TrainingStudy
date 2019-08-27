@@ -1,39 +1,68 @@
-<div class="test-container">
+<main class="test-card">
+    <div class="test-container">
+        <section id="introduction" >
+            <p class="title">テストを始める</p>
+            <p>＜テストモードを選択＞</p>
+            <div class="mode">
+                <input type="radio" name="quizset" checked value = "all"> 全ての問題から出題
+            </div>
+            <div class="mode">
+                <input type="radio" name="quizset" value = "weak"> 苦手問題のみ出題
+            </div>
+            <a id="start">START</a>
+        </section>
+        <!--テスト問題のcontent-->
+        <section id="test" class="hide">
+            <p id="question"></p>
+            <div id="answer">
+                <p>解答<span>必須</span></p>
+                <input name="answer" placeholder="入力してください">
+            </div>
+            <div id="button" class="">Next</div>
+        </section>
+        
+        <!--結果画面-->
+        <section id="result">
+            <p>Score 3/3</p>
+            <!--<a href="">Replay?</a>-->
+            <%= form_tag("/answers/#{current_user.id}", method: :post) do %>
+                <%= hidden_field_tag :answer_result %>
+                <%= submit_tag "データを送信",id: "submit"%>
+            <% end %>
+        </section>
+        
+        <!--jsファイルにカードのインスタンスデータの受け渡しの為のdivを記述-->
+        <div id="item_cards" data-words_all='<%= @cards.to_json %>' data-words_weak="<%= @cards_weakness.to_json %>"></div>
+    </div>
     
-    <section id="introduction" >
-        <p class="title">テストを始める</p>
-        <p>＜テストモードを選択＞</p>
-        <div class="mode">
-            <input type="radio" name="quizset" checked value = "all"> 全ての問題から出題
-        </div>
-        <div class="mode">
-            <input type="radio" name="quizset" value = "weak"> 苦手問題のみ出題
-        </div>
-        <a id="start">START</a>
-    </section>
-    <!--テスト問題のcontent-->
-    <section id="test" class="hide">
-        <p id="question"></p>
-        <div id="answer">
-            <p>解答<span>必須</span></p>
-            <input name="answer" placeholder="入力してください">
-        </div>
-        <div id="button" class="">Next</div>
+    <section class="description container">
+        <h3><テストの説明></h3>
+        <br>
+        <p>(テストについて)→</p>
+        <p>&emsp;&emsp;テスト問題は単語帳内の[English]に登録した単語に対して[Japnese]で登録した単語が何か答える形式です。</p>
+        <p>(モード選択について)-></p>
+        <p>
+            &emsp;&emsp;２種類のモードを選択してください。[全ての問題から出題]モードでは単語帳に登録された全ての単語の中から問題が選択されます。<br>
+            &emsp;&emsp;[苦手問題から出題]から出題モードでは合格判定が「不合格」状態の単語のみ出題されます。
+        </p>
+        <p>（テストの解答方法について)→</p>
+        <p>
+            &emsp;&emsp;テストの正解判定基準は[Japanese]で登録した単語になります。注意点としては{English}→apple,{Japanese}→りんごと単語登録した場合
+            appleに対して
+            <br>
+            &emsp;「リンゴ」と解答すると<span style:"color:red;">不正解</span>になってしまいます。この問題については今後のアップデートで改善していければと思ってます！
+        </p>
+        <p>(テスト結果データについて)→</p>
+        <p>
+            &emsp;&emsp;全問題出題後に[show score]ボタンを押すと、画面上にポップアップ画面が現れます。<br>
+            &emsp;&emsp;この画面上の[データを送信]ボタンを押すと、データベースにテスト結果が保存されます。<br>
+            &emsp;&emsp;ただし、テストデータが保存されるのは各カードにつき直近データ１０回分だけであり、それ以上のデータが存在する場合は最も
+            古いデータから削除されます。
+        </p>
+        
     </section>
     
-    <!--結果画面-->
-    <section id="result">
-        <p>Score 3/3</p>
-        <!--<a href="">Replay?</a>-->
-        <%= form_tag("/answers/#{current_user.id}", method: :post) do %>
-            <%= hidden_field_tag :answer_result %>
-            <%= submit_tag "データを送信",id: "submit"%>
-        <% end %>
-    </section>
-</div>
+    <!--最後にjsタグを読み込む-->
+    <%= javascript_include_tag "test" %>
+</main>
 
-<!--jsファイルにカードのインスタンスデータの受け渡しの為のdivを記述-->
-<div id="item_cards" data-words_all='<%= @cards.to_json %>' data-words_weak="<%= @cards_weakness.to_json %>"></div>
-
-<!--最後にjsタグを読み込む-->
-<%= javascript_include_tag "test" %>
