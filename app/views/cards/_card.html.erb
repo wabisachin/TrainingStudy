@@ -27,16 +27,31 @@
 		<%= "#{sprintf("%.1f",collect_rate*100)} % ( #{collect_times}回 / #{total_times}回 ) " %>
 		
 	</td>
+	
 	<!--ここから編集削除ボタンとモーダルのtd-->
 	<td>
-		<!--編集ボタンのmodal作成-->
-		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-<%= card.id %>">
-			編集
-		</button>
+		<!--ドロップダウンメニュー-->
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				操作を選択
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li role="presentation">
+					<!--編集ボタンのmodal作成-->
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-<%= card.id %>" role="menuitem" tabindex="-1">
+						編集
+					</button>
+				</li>
+				<li role="presentation">
+					<!--削除ボタンのmodal作成-->
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-<%= card.id %>" role="menuitem" tabindex="-1">
+						削除
+					</button>
+				</li>
+			</ul>
+		</div>
 		
-		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-<%= card.id %>">
-			削除
-		</button>
 		
 		<!-- 編集ボタンのモーダル・ダイアログ -->
 		<div class="modal fade" id="edit-<%= card.id %>" tabindex="-1">
