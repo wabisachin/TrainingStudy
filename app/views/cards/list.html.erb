@@ -1,6 +1,6 @@
 <main class="card-list">
 	<section class="list container">
-		<h2>単語帳一覧</h2>
+		<h2><%= icon("fas","book") %> 単語カード一覧</h2>
 	    <div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 				一括操作を選択
@@ -43,7 +43,7 @@
 					<th>English</th>
 					<th>Japanese</th>
 					<th>合格判定</th>
-					<th>直近正答率 (正答回数/出題回数)※最大10回</th>
+					<th>直近正答率</th>
 					<th>編集/削除</th>
 				</tr>
 			</thead>
@@ -54,7 +54,7 @@
 	</section>
 	
 	<section class="description container">
-		<h3><使い方></h3>
+		<h3>使い方</h3>
 		<div class ="content">
 			<p>このページは単語帳の管理ページです</p>
 			<!--<p>単語の編集/削除方法・・・</p>-->

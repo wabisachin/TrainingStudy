@@ -1,6 +1,6 @@
 <div class="new-multiple">
     <h2><%= icon("fas","highlighter") %> 新規カード登録</h2>
-    <%= form_tag "/create_multiple/#{current_user.id}", method: :post do %>
+    <%= form_tag "/create_multiple/#{current_user.id}", method: :post, class:"table-new-word" do %>
         <table class="table table-responsive mt-10px">
             <thead>
                 <tr>

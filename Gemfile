@@ -72,3 +72,9 @@ gem 'devise'
 gem 'font-awesome-sass', '~> 5.4.1'
 # Use ActiveStorage variant
 gem 'mini_magick'
+
+group :production do
+  gem 'rails_12factor'
+end
+
+ruby '2.5.1'
