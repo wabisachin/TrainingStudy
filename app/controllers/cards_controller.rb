@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
     def list
         @cards = Card.where(user_id: current_user.id).order(created_at: "DESC")
+        # binding.pry
     end
     
     def new

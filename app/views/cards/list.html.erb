@@ -1,56 +1,60 @@
 <main class="card-list">
+	
 	<section class="list container">
 		<h2><%= icon("fas","book") %> 単語カード一覧</h2>
-	    <div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				一括操作を選択
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li role="presentation">
-					<%= form_tag('/edit_multiple',method: "post", id:"form_edit",style:"margin-right:5px;") do %>
-					    <!--<%= submit_tag "一括編集", class: 'btn', id:"btn1", role:"menuitem",tabindex:"-1" %>-->
-					    <%= button_tag "一括編集", class: 'btn', id:"btn1", role:"menuitem",tabindex:"-1" do %>
-					    	<%= icon("fas","edit") %> 一括編集
-					    <% end %>
-				    <% end %>
-				</li>
-				<li role="presentation">
-					<%= form_tag('/destroy_multiple',method: "delete", id:"form_delete") do %>
-					    <!--<%= submit_tag '一括削除', class: 'btn', id:"btn2", role:"menuitem",tabindex:"-1" %>-->
-					    <%= button_tag class: 'btn', id:"btn2", role:"menuitem",tabindex:"-1" do %>
-					    		<%= icon("fas","trash-alt") %> 一括削除
-					    <% end %>
-				    <% end %>
-				</li>
-			</ul>
-		</div>
-	    <div class="d-inline-flex">
-	    	
-	    	<!--<%= form_tag('/edit_multiple',method: "post", id:"form_edit",style:"margin-right:5px;") do %>-->
-			   <!-- <%= submit_tag 'チェックリストの一括編集', class: 'btn btn-success', id:"btn1" %>-->
-		    <!--<% end %>-->
-		    <!--<%= form_tag('/destroy_multiple',method: "delete", id:"form_delete") do %>-->
-			   <!-- <%= submit_tag 'チェックリストの一括削除', class: 'btn btn-danger', id:"btn2" %>-->
-		    <!--<% end %>-->
-	    </div>
+		<!--単語リストの記述-->
+		<!--単語登録がない場合-->
+		<% if @cards.empty? %>
+			<p>単語の登録がまだありません。</p>
+			<%= link_to "単語登録はこちら","/new_multiple/#{current_user.id}" %>
+		<!--単語登録がある場合-->
+		<% else %>
+			
+			<div class="card-contents">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						一括操作を選択
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li role="presentation">
+							<%= form_tag('/edit_multiple',method: "post", id:"form_edit",style:"margin-right:5px;") do %>
+							    <!--<%= submit_tag "一括編集", class: 'btn', id:"btn1", role:"menuitem",tabindex:"-1" %>-->
+							    <%= button_tag "一括編集", class: 'btn', id:"btn1", role:"menuitem",tabindex:"-1" do %>
+							    	<%= icon("fas","edit") %> 一括編集
+							    <% end %>
+						    <% end %>
+						</li>
+						<li role="presentation">
+							<%= form_tag('/destroy_multiple',method: "delete", id:"form_delete") do %>
+							    <!--<%= submit_tag '一括削除', class: 'btn', id:"btn2", role:"menuitem",tabindex:"-1" %>-->
+							    <%= button_tag class: 'btn', id:"btn2", role:"menuitem",tabindex:"-1" do %>
+							    		<%= icon("fas","trash-alt") %> 一括削除
+							    <% end %>
+						    <% end %>
+						</li>
+					</ul>
+				</div>
+			    
+				<table class="table table-hover table-responsive mt-10px" id="words-table">
+					<thead>
+						<tr>
+							<th>選択</th>
+							<th>id</th>
+							<th>English</th>
+							<th>Japanese</th>
+							<th>合格判定</th>
+							<th>直近正答率</th>
+							<th>編集/削除</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <%= render partial: "card", collection: @cards %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
 	    
-		<table class="table table-hover table-responsive mt-10px" id="words-table">
-			<thead>
-				<tr>
-					<th>選択</th>
-					<th>id</th>
-					<th>English</th>
-					<th>Japanese</th>
-					<th>合格判定</th>
-					<th>直近正答率</th>
-					<th>編集/削除</th>
-				</tr>
-			</thead>
-			<tbody>
-			    <%= render partial: "card", collection: @cards %>
-			</tbody>
-		</table>	
 	</section>
 	
 	<section class="description container">

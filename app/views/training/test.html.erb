@@ -1,16 +1,24 @@
 <main class="test-card">
     <div class="test-container">
-        <section id="introduction" >
-            <p class="title">テストを始める</p>
-            <p>＜テストモードを選択＞</p>
-            <div class="mode">
-                <input type="radio" name="quizset" checked value = "all"> 全ての問題から出題
-            </div>
-            <div class="mode">
-                <input type="radio" name="quizset" value = "weak"> 苦手問題のみ出題
-            </div>
-            <a id="start">START</a>
-        </section>
+        
+        <% if @cards.empty? %>
+            <section id="introduction-empty-card">
+                <p>単語登録がまだありません。</p>
+                <%= link_to "単語登録はこちら","/new_multiple/#{current_user.id}" %>
+            </section>
+        <% else %>
+            <section id="introduction" >
+                <p class="title">テストを始める</p>
+                <p>＜テストモードを選択＞</p>
+                <div class="mode">
+                    <input type="radio" name="quizset" checked value = "all"> 全ての問題から出題
+                </div>
+                <div class="mode">
+                    <input type="radio" name="quizset" value = "weak"> 苦手問題のみ出題
+                </div>
+                <a id="start">START</a>
+            </section>
+        <% end %>
         <!--テスト問題のcontent-->
         <section id="test" class="hide">
             <p id="question"></p>
@@ -43,7 +51,7 @@
         <p>(モード選択について)-></p>
         <p>
             &emsp;&emsp;２種類のモードを選択してください。[全ての問題から出題]モードでは単語帳に登録された全ての単語の中から問題が選択されます。<br>
-            &emsp;&emsp;[苦手問題から出題]から出題モードでは合格判定が「不合格」状態の単語のみ出題されます。
+            &emsp;&emsp;[苦手問題から出題]モードでは合格判定が「不合格」状態の単語のみ出題されます。
         </p>
         <p>(テストの解答方法について)→</p>
         <p>
