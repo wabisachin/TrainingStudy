@@ -24,13 +24,17 @@
   background-color: #F4FAFA;
 }
  
+ .navbar {
+   margin-bottom:0px;
+ }
  
  .navbar-brand {
   // background: url("trainingstudy_logo.png") no-repeat left center;
   background-size: contain;
   height: 50px;
   width: 250px;
-  padding-left:50px;
+  padding-top:0px;
+  padding-left:30px;
   img {
     height:50px;
   }
@@ -88,10 +92,15 @@
   }
   
   .actions > input {
+    font-size:18px;
     background-color: #FDB748;
+    color:white;
     border-radius:5px;
-    padding:5px;
+    padding:8px;
     width:100%;
     border-color:#FDB748;
+    margin-top:10px;
+    
+    
   }
 }
