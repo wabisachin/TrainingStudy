@@ -28,7 +28,7 @@
       				<span class="icon-bar"></span>
       			</button>
       			<% if current_user %>
-      			  <%= link_to "/cards_list/ #{current_user.id}", class:"navbar-brand" do %>
+      			  <%= link_to "/cards_list/#{current_user.id}", class:"navbar-brand" do %>
       			    <img src="/assets/logo2.png">
       			  <% end %>
       			<% else %>
