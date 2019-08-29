@@ -31,5 +31,6 @@ $(function(){
         $("#form_delete").attr('id','selected_cards');
     });
     
+    console.log(1);
     
 })
