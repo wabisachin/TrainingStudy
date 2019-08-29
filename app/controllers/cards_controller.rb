@@ -14,11 +14,13 @@ class CardsController < ApplicationController
     def create_multiple
         # formから受け取った複数登録のデータをcards_columnに代入
         cards_column = params[:cards]
+        
         cards_column.each do |card| 
             Card.create(user_id: current_user.id, front_word: card[:front_word], back_word: card[:back_word])
         end
         # binding.pry
         redirect_to "/cards_list/#{current_user.id}"
+        
     end
     
     def update
@@ -63,8 +65,8 @@ class CardsController < ApplicationController
             card = Card.find(id)
             card.update(selected_card_params("card_id_#{id}"))
         end
-        redirect_to :list
-        
+         redirect_to "/cards_list/#{current_user.id}"
+  
     end
     
     def destroy_multiple
