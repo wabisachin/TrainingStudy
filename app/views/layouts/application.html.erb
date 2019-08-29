@@ -67,7 +67,7 @@
       </nav>
       
     </header>
-    <%= flash[:notice] %>
+    <%= render 'layouts/flash_messages' %>
     <!--viewファイルの内容がyield内に入る-->
     <%= yield %>
     

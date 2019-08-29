@@ -47,7 +47,7 @@ class CardsController < ApplicationController
         # 選択されたリストのid
         selected_ids= params[:selected_ids]
         if selected_ids.nil?
-            flash[:notice] = "単語カードを選択してください"
+            flash[:danger] = "単語カードが選択されていません"
             redirect_to "/cards_list/#{current_user.id}"
         end
         @selected_cards=Card.where(id: selected_ids)
@@ -74,7 +74,7 @@ class CardsController < ApplicationController
         ids = params[:selected_ids]
         # binding.pry
         if ids.nil?
-            flash[:notice] = "単語カードを選択してください"
+            flash[:danger] = "単語カードが選択されていません"
         else
             ids = params[:selected_ids]
             ids.each do |id|
