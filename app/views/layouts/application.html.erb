@@ -17,7 +17,6 @@
 
   <body>
     <header>
-      
       <!--ナビゲーションバー-->
       <nav class="navbar navbar-default">
       	<div class="container-fluid">
@@ -68,6 +67,7 @@
       </nav>
       
     </header>
+    <%= flash[:notice] %>
     <!--viewファイルの内容がyield内に入る-->
     <%= yield %>
     
