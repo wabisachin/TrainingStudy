@@ -28,15 +28,28 @@
         width:500px;
         list-style:none;
         // display:block;
-        // padding:0px;
+        padding:0px;
         margin:30px auto;
     }
     
     ul > li {
         text-align:left;
         margin-bottom:10px;
-        
     }
+    
+    @media (min-width:800px) {
+        ul {
+            width:600px;
+        }
+    }
+    
+    @media (max-width:512px) {
+        ul {
+            width:100%;
+        }
+    }
+    
+    
 }
 
 .header_logo {
